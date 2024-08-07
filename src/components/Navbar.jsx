@@ -70,7 +70,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  // modificato le route delle pagine e della navbar
   return (
     <Container scrolled={scrolled}>
       <NavbarContainer scrolled={scrolled}>
