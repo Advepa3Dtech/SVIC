@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link, useLocation } from "react-router-dom";
 import svic from "../assets/logo-svic.png";
 import { useState, useEffect } from "react";
 
@@ -42,6 +43,7 @@ const NavLinks = styled.div`
 `;
 
 const NavLink = styled.a`
+  // Usa <a> per le ancore
   text-decoration: none;
   color: black;
   font-size: 16px;
@@ -52,6 +54,7 @@ const NavLink = styled.a`
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation(); // Ottieni il percorso corrente
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,16 +70,25 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <Container scrolled={scrolled}>
       <NavbarContainer scrolled={scrolled}>
-        <Logo scrolled={scrolled}>
-          <img src={svic} alt="Logo" style={{ height: "60px" }} />
-        </Logo>
-        <NavLinks>
-          <NavLink href="#servizi">Servizi</NavLink>
-          <NavLink href="#punti-interesse">Punti interesse</NavLink>
-        </NavLinks>
+        <Link to="/">
+          <Logo scrolled={scrolled}>
+            <img src={svic} alt="Logo" style={{ height: "60px" }} />
+          </Logo>
+        </Link>
+        {location.pathname !== "/cookie-policy" ? (
+          <NavLinks>
+            <NavLink href="#servizi">Servizi</NavLink>
+            <NavLink href="#punti-interesse">Punti interesse</NavLink>
+          </NavLinks>
+        ) : (
+          <NavLinks>
+            <NavLink href="/">Home</NavLink>{" "}
+          </NavLinks>
+        )}
       </NavbarContainer>
     </Container>
   );
