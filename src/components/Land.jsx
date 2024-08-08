@@ -30,7 +30,7 @@ const Land = () => {
   return (
     <Container>
       <ContainerIframe>
-        <Iframe src="https://svic.ch/prod/site/land/index.html" />
+        <Iframe src="https://svic.ch/land/index.html" />
       </ContainerIframe>
     </Container>
   );

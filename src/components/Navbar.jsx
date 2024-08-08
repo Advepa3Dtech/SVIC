@@ -84,8 +84,12 @@ const Navbar = () => {
           </NavLinks>
         ) : (
           <NavLinks>
-            <NavLink to="#servizi">Servizi</NavLink>
-            <NavLink to="#punti-interesse">Punti interesse</NavLink>
+            <a className="anchor-links" href="#servizi">
+              Servizi
+            </a>
+            <a className="anchor-links" href="#punti-interesse">
+              Punti interesse
+            </a>
           </NavLinks>
         )}
       </NavbarContainer>

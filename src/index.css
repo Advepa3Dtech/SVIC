@@ -6,3 +6,10 @@ body {
   background-color: #f7f7fb;
   font-family: "DM Sans", sans-serif;
 }
+.anchor-links {
+  text-decoration: none;
+  color: #1d1e4b;
+}
+html {
+  scroll-behavior: smooth;
+}

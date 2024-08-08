@@ -55,21 +55,23 @@ const ServiceItem = styled.div`
 const ContainerIcon = styled.div`
   background-color: blue;
   border-radius: 10px;
-  margin-right: 15px;
-  width: 40px;
-  height: 40px;
+  width: 40px !important;
+  height: 40px !important;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box; // Aggiunto per includere padding e border
 `;
 
 const Icon = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
+  padding: 0px 20px 0px 20px;
 `;
 
 const ServiceText = styled.div`
+  margin-left: 15px;
   h4 {
     margin: 0;
     color: #1d1e4b;
@@ -112,7 +114,7 @@ const MetaverseServices = () => {
             <h4>Ambienti virtuali personalizzabili</h4>
             <p>
               Consente agli utenti di creare e personalizzare i propri spazi
-              virtuali all interno del metaverso.
+              virtuali all'interno del metaverso.
             </p>
           </ServiceText>
         </ServiceItem>
@@ -121,7 +123,7 @@ const MetaverseServices = () => {
             <Icon
               className="iconServices"
               src={documentText}
-              alt="Ambienti virtuali personalizzabili"
+              alt="Socializzazione e intrattenimento"
             />
           </ContainerIcon>
           <ServiceText>
@@ -143,8 +145,8 @@ const MetaverseServices = () => {
           <ServiceText>
             <h4>Economia virtuale</h4>
             <p>
-              Un economia virtuale consente agli utenti di comprare, vendere e
-              scambiare beni e servizi all interno del metaverso.
+              Un'economia virtuale consente agli utenti di comprare, vendere e
+              scambiare beni e servizi all'interno del metaverso.
             </p>
           </ServiceText>
         </ServiceItem>

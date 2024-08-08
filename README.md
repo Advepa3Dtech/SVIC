@@ -12,4 +12,4 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 # Website link
 
-https://svic.ch/prod/site/index.html
+https://svic.ch
