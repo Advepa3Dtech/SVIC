@@ -42,8 +42,7 @@ const NavLinks = styled.div`
   gap: 20px;
 `;
 
-const NavLink = styled.a`
-  // Usa <a> per le ancore
+const NavLink = styled(Link)`
   text-decoration: none;
   color: black;
   font-size: 16px;
@@ -58,11 +57,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -70,23 +65,27 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  // modificato le route delle pagine e della navbar
+
+  const showHomeLinkOnly = ["/cookie-policy", "/privacy-policy"].includes(
+    location.pathname
+  );
+
   return (
     <Container scrolled={scrolled}>
       <NavbarContainer scrolled={scrolled}>
         <Link to="/">
           <Logo scrolled={scrolled}>
-            <img src={svic} alt="Logo" style={{ height: "60px" }} />
+            <img src={svic} alt="Logo" />
           </Logo>
         </Link>
-        {location.pathname !== "/cookie-policy" ? (
+        {showHomeLinkOnly ? (
           <NavLinks>
-            <NavLink href="#servizi">Servizi</NavLink>
-            <NavLink href="#punti-interesse">Punti interesse</NavLink>
+            <NavLink to="/">Home</NavLink>
           </NavLinks>
         ) : (
           <NavLinks>
-            <NavLink href="/">Home</NavLink>{" "}
+            <NavLink to="#servizi">Servizi</NavLink>
+            <NavLink to="#punti-interesse">Punti interesse</NavLink>
           </NavLinks>
         )}
       </NavbarContainer>
