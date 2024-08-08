@@ -1,13 +1,11 @@
-<<<<<<< HEAD
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
 # SVIC
-Progetto svic react e three.js
->>>>>>> 0a66235d788f31e2c865d35963c33501626da6d5
+
+Progetto React con build three.js integrata
+
+## Development server
+
+Run `npm run dev` for a dev server. Usually start on localhost:5173
+
+## Build
+
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
