@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
-import svic from "../assets/logo-svic.png";
 import { useState, useEffect } from "react";
+import svic from "../assets/logo-svic.png";
+import HamburgerMenu from "./HamburgerMenu";
 
 const Container = styled.div`
   position: sticky;
   z-index: 100;
   top: 0;
   background-color: #f7f7fb;
-  width: 101%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s;
@@ -40,12 +40,29 @@ const Logo = styled.div`
 const NavLinks = styled.div`
   display: flex;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    position: absolute;
+    top: 70px;
+    right: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+    width: 100%;
+    height: 90vh;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    transition: right 0.3s ease-in-out;
+    justify-content: center;
+    gap: 100px;
+    font-size: 30px;
+  }
 `;
 
 const NavLink = styled(Link)`
   text-decoration: none;
   color: black;
   font-size: 16px;
+
   &:hover {
     text-decoration: underline;
   }
@@ -53,7 +70,8 @@ const NavLink = styled(Link)`
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation(); // Ottieni il percorso corrente
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +88,10 @@ const Navbar = () => {
     location.pathname
   );
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <Container scrolled={scrolled}>
       <NavbarContainer scrolled={scrolled}>
@@ -78,20 +100,27 @@ const Navbar = () => {
             <img src={svic} alt="Logo" />
           </Logo>
         </Link>
-        {showHomeLinkOnly ? (
-          <NavLinks>
-            <NavLink to="/">Home</NavLink>
-          </NavLinks>
-        ) : (
-          <NavLinks>
-            <a className="anchor-links" href="#servizi">
-              Servizi
-            </a>
-            <a className="anchor-links" href="#punti-interesse">
-              Punti interesse
-            </a>
-          </NavLinks>
-        )}
+        <HamburgerMenu isOpen={menuOpen} toggleMenu={toggleMenu} />
+        <NavLinks isOpen={menuOpen}>
+          {showHomeLinkOnly ? (
+            <NavLink to="/" onClick={toggleMenu}>
+              Home
+            </NavLink>
+          ) : (
+            <>
+              <a className="anchor-links" href="#servizi" onClick={toggleMenu}>
+                Servizi
+              </a>
+              <a
+                className="anchor-links"
+                href="#punti-interesse"
+                onClick={toggleMenu}
+              >
+                Punti interesse
+              </a>
+            </>
+          )}
+        </NavLinks>
       </NavbarContainer>
     </Container>
   );
