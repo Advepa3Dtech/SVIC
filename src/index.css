@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 body {
   background-color: #f7f7fb;
   font-family: "DM Sans", sans-serif;
@@ -9,7 +13,4 @@ body {
 .anchor-links {
   text-decoration: none;
   color: #1d1e4b;
-}
-html {
-  scroll-behavior: smooth;
 }
